@@ -7,7 +7,6 @@ import com.xclz.openpylib.objects.sequence.PyUnicode;
 import com.xclz.openpylib.python.Py;
 
 public class PyObject implements AutoCloseable {
-    long pointer = 0;
     long ob_refcnt = 1;
     PyType ob_type;
 

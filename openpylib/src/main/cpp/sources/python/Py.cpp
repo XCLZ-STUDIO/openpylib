@@ -1,24 +1,21 @@
-//
-// Created by 13043 on 2020/2/15.
-//
-
 #include <Python.h>
 #include <jni.h>
 
 extern "C" {
+
 JNIEXPORT void JNICALL
 Java_com_xclz_openpylib_python_Py__1Incref(JNIEnv *env, jclass, jobject jobj) {
     jclass PyObject_class = env->FindClass("com/xclz/openpylib/objects/basic/PyObject");
-    jfieldID pointer_field = env->GetFieldID(PyObject_class, "pointer", "J");
-    auto *obj = (PyObject *) env->GetLongField(jobj, pointer_field);
+    jfieldID mPointer_field = env->GetFieldID(PyObject_class, "mPointer", "J");
+    auto *obj = (PyObject *) env->GetLongField(jobj, mPointer_field);
     Py_INCREF(obj);
 }
 
 JNIEXPORT void JNICALL
 Java_com_xclz_openpylib_python_Py__1Decref(JNIEnv *env, jclass, jobject jobj) {
     jclass PyObject_class = env->FindClass("com/xclz/openpylib/objects/basic/PyObject");
-    jfieldID pointer_field = env->GetFieldID(PyObject_class, "pointer", "J");
-    auto *obj = (PyObject *) env->GetLongField(jobj, pointer_field);
+    jfieldID mPointer_field = env->GetFieldID(PyObject_class, "mPointer", "J");
+    auto *obj = (PyObject *) env->GetLongField(jobj, mPointer_field);
     Py_DECREF(obj);
 }
 
@@ -48,4 +45,5 @@ JNIEXPORT jboolean JNICALL Java_com_xclz_openpylib_python_Py_FinalizeEx(JNIEnv *
 JNIEXPORT void JNICALL Java_com_xclz_openpylib_python_Py_Finalize(JNIEnv *, jclass) {
     Py_Finalize();
 }
+
 }
