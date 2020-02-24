@@ -1,7 +1,6 @@
 package com.xclz.openpylib.objects.basic;
 
 import com.xclz.openpylib.abstracts.PyBase;
-import com.xclz.openpylib.abstracts.PyIter;
 import com.xclz.openpylib.objects.sequence.PyBytes;
 import com.xclz.openpylib.objects.sequence.PyList;
 import com.xclz.openpylib.objects.sequence.PyUnicode;
@@ -136,7 +135,7 @@ public class PyObject implements AutoCloseable, PyBase {
         return _PyObject.Dir(this);
     }
 
-    public PyIter getIter() {
+    public PyObject getIter() {
         return _PyObject.GetIter(this);
     }
 }
@@ -190,6 +189,6 @@ class _PyObject {
 
     public static native PyList Dir(PyObject obj);
 
-    public static native PyIter GetIter(PyObject obj);
+    public static native PyObject GetIter(PyObject obj);
 
 }

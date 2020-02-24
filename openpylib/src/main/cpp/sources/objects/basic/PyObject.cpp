@@ -1,5 +1,4 @@
 #include "globals.hpp"
-#include <android/log.h>
 
 extern "C" {
 
@@ -184,7 +183,7 @@ JNIEXPORT jobject JNICALL
 Java_com_xclz_openpylib_objects_basic__1PyObject_GetIter(JNIEnv *env, jclass, jobject jobj) {
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *result = PyObject_GetIter(obj);
-    return NewPyIter(env, result);
+    return NewPyObject(env, result);
 }
 
 }

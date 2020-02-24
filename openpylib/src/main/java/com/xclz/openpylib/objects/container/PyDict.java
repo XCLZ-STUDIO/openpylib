@@ -5,6 +5,14 @@ import com.xclz.openpylib.objects.basic.PyObject;
 import com.xclz.openpylib.objects.sequence.PyList;
 
 public class PyDict extends PyObject implements PyMapping {
+    public static PyDict Check(PyObject obj) {
+        return _PyDict.Check(obj);
+    }
+
+    public static PyDict CheckExact(PyObject obj) {
+        return _PyDict.CheckExact(obj);
+    }
+
     public static PyDict New() {
         return _PyDict.New();
     }
@@ -84,8 +92,10 @@ public class PyDict extends PyObject implements PyMapping {
 }
 
 class _PyDict {
-    //TODO int PyDict_Check(PyObject *p)
-    //TODO int PyDict_CheckExact(PyObject *p)
+    public static native PyDict Check(PyObject obj);
+
+    public static native PyDict CheckExact(PyObject obj);
+
     public static native PyDict New();
 
     //TODO PyObject* PyDictProxy_New(PyObject *mapping)

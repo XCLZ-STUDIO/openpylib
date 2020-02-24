@@ -4,7 +4,7 @@
 extern "C" {
 
 JNIEXPORT jobject Java_com_xclz_openpylib_abstracts__1PyNumber_Add(JNIEnv *env, jclass, jobject jo1, jobject jo2) {
-    jclass PyObject_class = env->FikndClass("com/xclz/openpylib/objects/basic/PyObject");
+    jclass PyObject_class = env->FindClass("com/xclz/openpylib/objects/basic/PyObject");
     jfieldID mPointer_field = env->GetFieldID(PyObject_class, "mPointer", "J");
     jmethodID PyObject_init = env->GetMethodID(PyObject_class, "<init>", "(I)V");
 
