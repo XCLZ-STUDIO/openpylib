@@ -1,12 +1,14 @@
 package com.xclz.openpylib.objects.basic;
 
+import com.xclz.openpylib.abstracts.PyBase;
 import com.xclz.openpylib.abstracts.PyIter;
 import com.xclz.openpylib.objects.sequence.PyBytes;
 import com.xclz.openpylib.objects.sequence.PyList;
 import com.xclz.openpylib.objects.sequence.PyUnicode;
 import com.xclz.openpylib.python.Py;
 
-public class PyObject implements AutoCloseable {
+public class PyObject implements AutoCloseable, PyBase {
+    long mPointer = 0;
     long ob_refcnt = 1;
     PyType ob_type;
 
@@ -61,9 +63,10 @@ public class PyObject implements AutoCloseable {
         return _PyObject.RichCompareBool(this, other, opid);
     }
 
-    public boolean isSubClass(PyObject clazz) {
-        return _PyObject.IsSubClass(this, clazz);
-    }
+//TODO implement this in PyType
+//    public boolean isSubClass(PyObject clazz) {
+//        return _PyObject.IsSubClass(this, clazz);
+//    }
 
     public boolean isInstance(PyObject clazz) {
         return _PyObject.IsInstance(this, clazz);
@@ -74,7 +77,7 @@ public class PyObject implements AutoCloseable {
     }
 
     public PyUnicode ascii() {
-        return _PyObject.Ascii(this);
+        return _PyObject.ASCII(this);
     }
 
     public PyUnicode str() {
@@ -155,13 +158,11 @@ class _PyObject {
 
     public static native boolean RichCompareBool(PyObject obj1, PyObject obj2, int opid);
 
-    public static native boolean IsSubClass(PyObject derived, PyObject cls);
-
     public static native boolean IsInstance(PyObject inst, PyObject cls);
 
     public static native PyUnicode Repr(PyObject obj);
 
-    public static native PyUnicode Ascii(PyObject obj);
+    public static native PyUnicode ASCII(PyObject obj);
 
     public static native PyUnicode Str(PyObject obj);
 

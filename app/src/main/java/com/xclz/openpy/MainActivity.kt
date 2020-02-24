@@ -1,9 +1,10 @@
 package com.xclz.openpy
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.xclz.openpylib.objects.sequence.PyList
 import com.xclz.openpylib.python.Py
-import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 
 class MainActivity : AppCompatActivity() {
@@ -14,7 +15,10 @@ class MainActivity : AppCompatActivity() {
 
         Py.tempFunction(File(filesDir, "python_home").absolutePath)
         Py.Initialize()
-        center_text.text = "Is initialized: ${Py.IsInitialized()}"
+
+        val list = PyList.New(5)
+        Log.e("AndroidRuntime[X_Tu]", list.hasAttr("test").toString())
+//        center_text.text = "PyList Size: ${list.size()}"
     }
 
 

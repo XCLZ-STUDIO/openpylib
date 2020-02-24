@@ -1,8 +1,10 @@
 package com.xclz.openpylib.abstracts;
 
 
+import com.xclz.openpylib.objects.basic.PyObject;
+
 public interface PyNumber {
-    default PyNumber add(PyNumber o) {
+    default PyObject add(PyNumber o) {
         return _PyNumber.Add(this, o);
     }
 
@@ -147,7 +149,7 @@ public interface PyNumber {
 class _PyNumber {
     /*TODO Check*/
 
-    public static native PyNumber Add(PyNumber o1, PyNumber o2);
+    public static native PyObject Add(PyNumber o1, PyNumber o2);
 
     public static native PyNumber Subtract(PyNumber o1, PyNumber o2);
 

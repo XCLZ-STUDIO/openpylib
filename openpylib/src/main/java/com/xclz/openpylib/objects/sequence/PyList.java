@@ -5,6 +5,7 @@ import com.xclz.openpylib.abstracts.PySequence;
 import com.xclz.openpylib.objects.basic.PyObject;
 
 public class PyList extends PyObject implements PySequence, PyMapping {
+
     public static PyList New(long len) {
         return _PyList.New(len);
     }
@@ -13,7 +14,7 @@ public class PyList extends PyObject implements PySequence, PyMapping {
         return _PyList.ClearFreeList();
     }
 
-    public long Size() {
+    public long size() {
         return _PyList.Size(this);
     }
 
@@ -21,55 +22,57 @@ public class PyList extends PyObject implements PySequence, PyMapping {
         return _PyList.SIZE(this);
     }
 
-    public PyObject GetItem(long i) {
+    public PyObject getItem(long i) {
         return _PyList.GetItem(this, i);
     }
 
-    public PyObject GET_ITEM(long i) {
+    public PyObject getITEM(long i) {
         return _PyList.GET_ITEM(this, i);
     }
 
-    public boolean SetItem(long i, PyObject item) {
+    public boolean etItem(long i, PyObject item) {
         return _PyList.SetItem(this, i, item);
     }
 
-    public void SET_ITEM(long i, PyObject item) {
+    public void setITEM(long i, PyObject item) {
         _PyList.SET_ITEM(this, i, item);
     }
 
-    public boolean Insert(long i, PyObject item) {
+    public boolean insert(long i, PyObject item) {
         return _PyList.Insert(this, i, item);
     }
 
-    public boolean Append(PyObject item) {
+    public boolean append(PyObject item) {
         return _PyList.Append(this, item);
     }
 
-    public PyObject GetSlice(long low, long high) {
+    public PyObject getSlice(long low, long high) {
         return _PyList.GetSlice(this, low, high);
     }
 
-    public boolean SetSlice(long low, long high, PyObject... items) {
+    public boolean setSlice(long low, long high, PyObject... items) {
         return _PyList.SetSlice(this, low, high, items);
     }
 
-    public boolean Sort() {
+    public boolean sort() {
         return _PyList.Sort(this);
     }
 
-    public boolean Reverse() {
+    public boolean reverse() {
         return _PyList.Reverse(this);
     }
 
-    public PyTuple AsTuple() {
+    public PyTuple asTuple() {
         return _PyList.AsTuple(this);
     }
 
 }
 
 class _PyList {
-    //TODO int PyList_Check(PyObject *p)
-    //TODO int PyList_CheckExact(PyObject *p)
+    public static native PyList PyList_Check(PyObject p);
+
+    public static native PyList PyList_CheckExact(PyObject p);
+
     public static native PyList New(long len);
 
     public static native long Size(PyList obj);

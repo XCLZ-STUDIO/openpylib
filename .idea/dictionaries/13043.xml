@@ -2,9 +2,12 @@
   <dictionary name="13043">
     <words>
       <w>initsigs</w>
+      <w>jname</w>
       <w>jobj</w>
+      <w>jobject</w>
       <w>openpylib</w>
       <w>pythonhome</w>
+      <w>refcnt</w>
       <w>xclz</w>
     </words>
   </dictionary>
