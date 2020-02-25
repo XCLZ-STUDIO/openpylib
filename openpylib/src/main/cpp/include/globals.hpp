@@ -2,6 +2,7 @@
 #include <Python.h>
 #include <jni.h>
 
+extern jclass _PyNumber_class;
 extern jclass PyBytes_class;
 extern jclass PyDict_class;
 extern jclass PyList_class;
@@ -11,6 +12,7 @@ extern jclass PyUnicode_class;
 
 extern jfieldID mPointer_field;
 
+extern jmethodID _PyNumber_init;
 extern jmethodID PyBytes_init;
 extern jmethodID PyDict_init;
 extern jmethodID PyList_init;
@@ -30,11 +32,13 @@ inline jobject obj_c2j(JNIEnv *env, jclass clazz, jmethodID init, PyObject *obj)
     return jobj;
 }
 
+inline jobject NewPyNumber(JNIEnv *env, PyObject *obj) {
+    return obj_c2j(env, _PyNumber_class, _PyNumber_init, obj);
+}
 
 inline jobject NewPyBytes(JNIEnv *env, PyObject *obj) {
     return obj_c2j(env, PyBytes_class, PyBytes_init, obj);
 }
-
 inline jobject NewPyDict(JNIEnv *env, PyObject *obj) {
     return obj_c2j(env, PyDict_class, PyDict_init, obj);
 }
