@@ -27,7 +27,6 @@ Java_com_xclz_openpylib_objects_sequence_PyTuple_New(JNIEnv *env, jclass, jlong 
 JNIEXPORT jobject JNICALL
 Java_com_xclz_openpylib_objects_sequence_PyTuple_Pack(JNIEnv *env, jclass, jobjectArray items) {
     jsize length = env->GetArrayLength(items);
-
     PyObject *result = PyTuple_New(length);
     if (result == nullptr)
         return nullptr;

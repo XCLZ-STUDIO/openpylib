@@ -126,5 +126,4 @@ Java_com_xclz_openpylib_objects_sequence_PyList_ClearFreeList(JNIEnv*, jclass) {
     return PyList_ClearFreeList();
 }
 
-
 }
