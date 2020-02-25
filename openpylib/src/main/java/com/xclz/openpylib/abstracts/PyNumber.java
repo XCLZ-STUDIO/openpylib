@@ -288,74 +288,40 @@ public interface PyNumber {
 
 
 class _PyNumber extends PyObject implements PyNumber {
-    /*TODO Check*/
+    public static native PyNumber Check(PyObject obj);
     public static native PyNumber Add(PyNumber o1, PyNumber o2);
-
     public static native PyNumber Subtract(PyNumber o1, PyNumber o2);
-
     public static native PyNumber Multiply(PyNumber o1, PyNumber o2);
-
     public static native PyNumber MatrixMultiply(PyNumber o1, PyNumber o2);
-
     public static native PyNumber FloorDivide(PyNumber o1, PyNumber o2);
-
     public static native PyNumber TrueDiv(PyNumber o1, PyNumber o2);
-
     public static native PyNumber Remainder(PyNumber o1, PyNumber o2);
-
     public static native PyNumber DivMod(PyNumber o1, PyNumber o2);
-
     public static native PyNumber Power(PyNumber o1, PyNumber o2, PyNumber o3);
-
     public static native PyNumber Negative(PyNumber o);
-
     public static native PyNumber Positive(PyNumber o);
-
     public static native PyNumber Absolute(PyNumber o);
-
     public static native PyNumber Invert(PyNumber o);
-
     public static native PyNumber Lshift(PyNumber o1, PyNumber o2);
-
     public static native PyNumber Rshift(PyNumber o1, PyNumber o2);
-
     public static native PyNumber And(PyNumber o1, PyNumber o2);
-
     public static native PyNumber Xor(PyNumber o1, PyNumber o2);
-
     public static native PyNumber Or(PyNumber o1, PyNumber o2);
-
     public static native PyNumber InPlaceAdd(PyNumber o1, PyNumber o2);
-
     public static native PyNumber InPlaceSubtract(PyNumber o1, PyNumber o2);
-
     public static native PyNumber InPlaceMultiply(PyNumber o1, PyNumber o2);
-
     public static native PyNumber InPlaceMatrixMultiply(PyNumber o1, PyNumber o2);
-
     public static native PyNumber InPlaceFloorDivide(PyNumber o1, PyNumber o2);
-
     public static native PyNumber InPlaceTrueDivide(PyNumber o1, PyNumber o2);
-
     public static native PyNumber InPlaceRemainder(PyNumber o1, PyNumber o2);
-
     public static native PyNumber InPlacePower(PyNumber o1, PyNumber o2, PyNumber o3);
-
     public static native PyNumber InPlaceLshift(PyNumber o1, PyNumber o2);
-
     public static native PyNumber InPlaceRshift(PyNumber o1, PyNumber o2);
-
     public static native PyNumber InPlaceAnd(PyNumber o1, PyNumber o2);
-
     public static native PyNumber InPlaceXor(PyNumber o1, PyNumber o2);
-
     public static native PyNumber InPlaceOr(PyNumber o1, PyNumber o2);
-
     public static native PyNumber Long(PyNumber o);
-
     public static native PyNumber Float(PyNumber o);
-
     public static native PyNumber Index(PyNumber o);
-
     public static native PyNumber ToBase(PyNumber o, int base);
 }
