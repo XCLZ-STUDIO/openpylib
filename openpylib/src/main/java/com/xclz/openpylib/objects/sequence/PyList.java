@@ -16,7 +16,7 @@ public class PyList extends PyObject implements PySequence, PyMapping {
     public static native void SET_ITEM(PyList obj, long i, PyObject item);
     public static native boolean Insert(PyList obj, long i, PyObject item);
     public static native boolean Append(PyList obj, PyObject item);
-    public static native PyObject GetSlice(PyList obj, long low, long high);
+    public static native PyList GetSlice(PyList obj, long low, long high);
     public static native boolean SetSlice(PyList obj, long low, long high, PySequence itemlist);
     public static native boolean Sort(PyList obj);
     public static native boolean Reverse(PyList obj);
@@ -55,7 +55,7 @@ public class PyList extends PyObject implements PySequence, PyMapping {
         return Append(this, item);
     }
 
-    public PyObject getSlice(long low, long high) {
+    public PyList getSlice(long low, long high) {
         return GetSlice(this, low, high);
     }
 

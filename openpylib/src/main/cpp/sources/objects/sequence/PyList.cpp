@@ -89,7 +89,7 @@ JNIEXPORT jobject JNICALL
 Java_com_xclz_openpylib_objects_sequence_PyList_GetSlice(JNIEnv *env, jclass, jobject jobj, jlong low, jlong high) {
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *result = PyList_GetSlice(obj, low, high);
-    return NewPyObject(env, result);
+    return NewPyList(env, result);
 }
 
 JNIEXPORT jboolean JNICALL
@@ -122,7 +122,7 @@ Java_com_xclz_openpylib_objects_sequence_PyList_AsTuple(JNIEnv *env, jclass, job
 }
 
 JNIEXPORT jint JNICALL
-Java_com_xclz_openpylib_objects_sequence_PyList_ClearFreeList(JNIEnv*env, jclass) {
+Java_com_xclz_openpylib_objects_sequence_PyList_ClearFreeList(JNIEnv*, jclass) {
     return PyList_ClearFreeList();
 }
 
