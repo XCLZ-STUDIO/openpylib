@@ -37,7 +37,6 @@ inline jobject obj_c2j(JNIEnv *env, jclass clazz, jmethodID init, PyObject *obj)
 inline jobject NewPyNumber(JNIEnv *env, PyObject *obj) {
     return obj_c2j(env, _PyNumber_class, PyObject_init, obj);
 }
-
 inline jobject NewPyBytes(JNIEnv *env, PyObject *obj) {
     return obj_c2j(env, PyBytes_class, PyObject_init, obj);
 }
