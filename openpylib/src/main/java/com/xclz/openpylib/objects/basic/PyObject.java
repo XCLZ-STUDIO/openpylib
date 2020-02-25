@@ -11,7 +11,6 @@ public class PyObject implements AutoCloseable, PyBase {
     long ob_refcnt = 1;
     PyType ob_type;
 
-
     @Override
     public void close() {
         Py._Decref(this);
@@ -22,53 +21,29 @@ public class PyObject implements AutoCloseable, PyBase {
     // }
 
     public static native boolean HasAttr(PyObject obj, PyObject name);
-
     public static native boolean HasAttrString(PyObject obj, String name);
-
     public static native PyObject GetAttr(PyObject obj, PyObject name);
-
     public static native PyObject GetAttrString(PyObject obj, String name);
-
     public static native boolean DelAttr(PyObject obj, PyObject name);
-
     public static native boolean DelAttrString(PyObject obj, String name);
-
     public static native PyObject RichCompare(PyObject obj1, PyObject obj2, int opid);
-
     public static native boolean RichCompareBool(PyObject obj1, PyObject obj2, int opid);
-
     public static native boolean IsInstance(PyObject inst, PyObject cls);
-
     public static native PyUnicode Repr(PyObject obj);
-
     public static native PyUnicode ASCII(PyObject obj);
-
     public static native PyUnicode Str(PyObject obj);
-
     public static native PyBytes Bytes(PyObject obj);
-
     public static native long Hash(PyObject obj);
-
     public static native boolean IsTrue(PyObject obj);
-
     public static native boolean Not(PyObject obj);
-
     public static native PyType Type(PyObject obj);
-
     public static native long Size(PyObject obj);
-
     public static native long Length(PyObject obj);
-
     public static native long LengthHint(PyObject obj, long publicValue);
-
     public static native PyObject GetItem(PyObject obj, PyObject key);
-
     public static native boolean SetItem(PyObject obj, PyObject key, PyObject value);
-
     public static native boolean DelItem(PyObject obj, PyObject key);
-
     public static native PyList Dir(PyObject obj);
-
     public static native PyObject GetIter(PyObject obj);
 
     //TODO int PyObject_Print(PyObject *o, FILE *fp, int flags)
