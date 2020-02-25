@@ -7,6 +7,7 @@ extern jclass PyBytes_class;
 extern jclass PyDict_class;
 extern jclass PyFloat_class;
 extern jclass PyList_class;
+extern jclass PyLong_class;
 extern jclass PyObject_class;
 extern jclass PyType_class;
 extern jclass PyUnicode_class;
@@ -48,6 +49,9 @@ inline jobject NewPyFloat(JNIEnv *env, PyObject *obj) {
 }
 inline jobject NewPyList(JNIEnv *env, PyObject *obj) {
     return obj_c2j(env, PyList_class, PyObject_init, obj);
+}
+inline jobject NewPyLong(JNIEnv *env, PyObject *obj) {
+    return obj_c2j(env, PyLong_class, PyObject_init, obj);
 }
 inline jobject NewPyObject(JNIEnv *env, PyObject *obj) {
     return obj_c2j(env, PyObject_class, PyObject_init, obj);
