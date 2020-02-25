@@ -49,22 +49,22 @@ JNIEXPORT jstring JNICALL
 Java_com_xclz_openpylib_objects_sequence_PyBytes_AsString(JNIEnv *env, jclass, jobject jobj) {
     PyObject *obj = obj_j2c(env, jobj);
     const char *str = PyBytes_AsString(obj);
-    return env->NewStringUTF(str);;
+    return env->NewStringUTF(str);
 }
 
 JNIEXPORT jstring JNICALL
 Java_com_xclz_openpylib_objects_sequence_PyBytes_AS_1STRING(JNIEnv *env, jclass, jobject jobj) {
     PyObject *obj = obj_j2c(env, jobj);
-    PyBytes_AS_STRING();
+    const char *str = PyBytes_AS_STRING(obj);
+    return env->NewStringUTF(str);
 }
 
-JNIEXPORT void JNICALL
+JNIEXPORT jobject JNICALL
 Java_com_xclz_openpylib_objects_sequence_PyBytes_Concat(JNIEnv *env, jclass, jobject jbytes, jobject jnewpart) {
     PyObject *bytes = obj_j2c(env, jbytes);
     PyObject *newpart = obj_j2c(env, jnewpart);
     PyBytes_Concat(&bytes, newpart);
-    //TODO fix this
-    env->SetLongField(jbytes, mPointer_field, (jlong)bytes);
+    return NewPyObject(env, bytes);
 }
 
 //JNIEXPORT void JNICALL

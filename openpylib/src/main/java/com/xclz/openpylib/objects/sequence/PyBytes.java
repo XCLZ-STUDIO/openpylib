@@ -15,7 +15,7 @@ public class PyBytes extends PyObject implements PySequence, PyMapping, PyBuffer
     public static native long SIZE(PyBytes obj);
     public static native String AsString(PyObject obj);
     public static native String AS_STRING(PyObject obj);
-    public static native void Concat(PyBytes bytes, PyBytes newpart);
+    public static native PyBytes Concat(PyBytes bytes, PyBytes newpart);
     //deprecated: public static native void ConcatAndDel(PyBytes bytes, PyBytes newpart);
 
     public static PyBytes From(String str) {
@@ -42,8 +42,8 @@ public class PyBytes extends PyObject implements PySequence, PyMapping, PyBuffer
         return AS_STRING(this);
     }
 
-    public void concat(PyBytes newpart) {
-        Concat(this, newpart);
+    public PyBytes concat(PyBytes newpart) {
+        return Concat(this, newpart);
     }
 
 //    public void concatAndDel(PyBytes newpart) {
