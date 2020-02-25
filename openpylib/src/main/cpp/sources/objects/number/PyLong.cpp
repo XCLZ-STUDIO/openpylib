@@ -33,7 +33,7 @@ Java_com_xclz_openpylib_objects_number_PyLong_FromDouble(JNIEnv *env, jclass, jd
 
 //JNIEXPORT jobject JNICALL
 //Java_com_xclz_openpylib_objects_number_PyLong_FromString(JNIEnv *env, jclass, jstring jstr, jint base) {
-//    const char *str = env->GetStringUTFChars(jstr, NULL);
+//    const char *str = env->GetStringUTFChars(jstr, nullptr);
 //    PyObject *result = PyLong_FromString(str, base);
 //    env->ReleaseStringUTFChars(jstr, str);
 //    return NewPyLong(env, result);

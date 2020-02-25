@@ -1,6 +1,7 @@
 #include "globals.hpp"
 
 jclass _PyNumber_class = nullptr;
+jclass PyByteArray_class = nullptr;
 jclass PyBytes_class = nullptr;
 jclass PyDict_class = nullptr;
 jclass PyFloat_class = nullptr;
@@ -23,6 +24,7 @@ jmethodID PyObject_init = nullptr;
 
 static void init_class(JNIEnv *env) {
     _PyNumber_class = (jclass) env->NewGlobalRef(env->FindClass("com/xclz/openpylib/abstracts/_PyNumber"));
+    PyByteArray_class = (jclass)env->NewGlobalRef(env->FindClass("com/xclz/openpylib/objects/sequence/PyByteArray"));
     PyBytes_class = (jclass)env->NewGlobalRef(env->FindClass("com/xclz/openpylib/objects/sequence/PyBytes"));
     PyDict_class = (jclass) env->NewGlobalRef(env->FindClass("com/xclz/openpylib/objects/container/PyDict"));
     PyFloat_class = (jclass)env->NewGlobalRef(env->FindClass("com/xclz/openpylib/objects/number/PyFloat"));

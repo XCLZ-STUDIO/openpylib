@@ -3,6 +3,7 @@
 #include <jni.h>
 
 extern jclass _PyNumber_class;
+extern jclass PyByteArray_class;
 extern jclass PyBytes_class;
 extern jclass PyDict_class;
 extern jclass PyFloat_class;
@@ -37,6 +38,9 @@ inline jobject obj_c2j(JNIEnv *env, jclass clazz, jmethodID init, PyObject *obj)
 
 inline jobject NewPyNumber(JNIEnv *env, PyObject *obj) {
     return obj_c2j(env, _PyNumber_class, PyObject_init, obj);
+}
+inline jobject NewPyByteArray(JNIEnv *env, PyObject *obj) {
+    return obj_c2j(env, PyByteArray_class, PyObject_init, obj);
 }
 inline jobject NewPyBytes(JNIEnv *env, PyObject *obj) {
     return obj_c2j(env, PyBytes_class, PyObject_init, obj);

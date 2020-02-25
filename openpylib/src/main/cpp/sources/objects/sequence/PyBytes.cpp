@@ -20,7 +20,7 @@ Java_com_xclz_openpylib_objects_sequence_PyBytes_CheckExact(JNIEnv *env, jclass,
 
 JNIEXPORT jobject JNICALL
 Java_com_xclz_openpylib_objects_sequence_PyBytes_FromString(JNIEnv *env, jclass, jstring jstr) {
-    const char *str = env->GetStringUTFChars(jstr, NULL);
+    const char *str = env->GetStringUTFChars(jstr, nullptr);
     PyObject *result = PyBytes_FromString(str);
     env->ReleaseStringUTFChars(jstr, str);
     return NewPyBytes(env, result);
