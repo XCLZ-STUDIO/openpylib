@@ -14,12 +14,12 @@ public class PyDict extends PyObject implements PyMapping {
     public static native PyDict Copy(PyDict obj);
     public static native boolean SetItem(PyDict obj, PyObject key, PyObject value);
     public static native boolean SetItemString(PyDict obj, String key, PyObject value);
-    public static native boolean DelItem(PglyDict obj, PyObject key);
+    public static native boolean DelItem(PyDict obj, PyObject key);
     public static native boolean DelItemString(PyDict obj, String key);
-    public static native PyObject GetItem(PyDict obj, PyObject key);    //TODO incref
-    public static native PyObject GetItemWithError(PyDict obj, PyObject key);   //TODO incref
-    public static native PyObject GetItemString(PyDict obj, String key);    //TODO incref
-    public static native PyObject SetDefault(PyDict obj, PyObject key, PyObject defaultobj);    //TODO incref
+    public static native PyObject GetItem(PyDict obj, PyObject key);
+    public static native PyObject GetItemWithError(PyDict obj, PyObject key);
+    public static native PyObject GetItemString(PyDict obj, String key);
+    public static native PyObject SetDefault(PyDict obj, PyObject key, PyObject defaultobj);
     public static native PyList Items(PyDict obj);
     public static native PyList Keys(PyDict obj);
     public static native PyList Values(PyDict obj);

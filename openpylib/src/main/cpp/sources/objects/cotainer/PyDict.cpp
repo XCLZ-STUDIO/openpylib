@@ -31,8 +31,7 @@ Java_com_xclz_openpylib_objects_container_PyDict_Clear(JNIEnv *env, jclass, jobj
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_xclz_openpylib_objects_container_PyDict_Contains(JNIEnv *env, jclass, jobject jobj,
-                                                          jobject jkey) {
+Java_com_xclz_openpylib_objects_container_PyDict_Contains(JNIEnv *env, jclass, jobject jobj, jobject jkey) {
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *key = obj_j2c(env, jkey);
     int result = PyDict_Contains(obj, key);
@@ -47,8 +46,7 @@ Java_com_xclz_openpylib_objects_container_PyDict_Copy(JNIEnv *env, jclass, jobje
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_xclz_openpylib_objects_container_PyDict_SetItem(JNIEnv *env, jclass, jobject jobj,
-                                                         jobject jkey, jobject jvalue) {
+Java_com_xclz_openpylib_objects_container_PyDict_SetItem(JNIEnv *env, jclass, jobject jobj, jobject jkey, jobject jvalue) {
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *key = obj_j2c(env, jkey);
     PyObject *value = obj_j2c(env, jvalue);
@@ -57,8 +55,7 @@ Java_com_xclz_openpylib_objects_container_PyDict_SetItem(JNIEnv *env, jclass, jo
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_xclz_openpylib_objects_container_PyDict_SetItemString(JNIEnv *env, jclass, jobject jobj,
-                                                               jstring jkey, jobject jvalue) {
+Java_com_xclz_openpylib_objects_container_PyDict_SetItemString(JNIEnv *env, jclass, jobject jobj, jstring jkey, jobject jvalue) {
     PyObject *obj = obj_j2c(env, jobj);
     const char *key = env->GetStringUTFChars(jkey, nullptr);
     PyObject *value = obj_j2c(env, jvalue);
@@ -67,8 +64,7 @@ Java_com_xclz_openpylib_objects_container_PyDict_SetItemString(JNIEnv *env, jcla
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_xclz_openpylib_objects_container_PyDict_DelItem(JNIEnv *env, jclass, jobject jobj,
-                                                         jobject jkey) {
+Java_com_xclz_openpylib_objects_container_PyDict_DelItem(JNIEnv *env, jclass, jobject jobj, jobject jkey) {
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *key = obj_j2c(env, jkey);
     int result = PyDict_DelItem(obj, key);
@@ -76,8 +72,7 @@ Java_com_xclz_openpylib_objects_container_PyDict_DelItem(JNIEnv *env, jclass, jo
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_xclz_openpylib_objects_container_PyDict_DelItemString(JNIEnv *env, jclass, jobject jobj,
-                                                               jstring jkey) {
+Java_com_xclz_openpylib_objects_container_PyDict_DelItemString(JNIEnv *env, jclass, jobject jobj, jstring jkey) {
     PyObject *obj = obj_j2c(env, jobj);
     const char *key = env->GetStringUTFChars(jkey, nullptr);
     int result = PyDict_DelItemString(obj, key);
@@ -85,39 +80,39 @@ Java_com_xclz_openpylib_objects_container_PyDict_DelItemString(JNIEnv *env, jcla
 }
 
 JNIEXPORT jobject JNICALL
-Java_com_xclz_openpylib_objects_container_PyDict_GetItem(JNIEnv *env, jclass, jobject jobj,
-                                                         jobject jkey) {
+Java_com_xclz_openpylib_objects_container_PyDict_GetItem(JNIEnv *env, jclass, jobject jobj, jobject jkey) {
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *key = obj_j2c(env, jkey);
     PyObject *result = PyDict_GetItem(obj, key);
+    Py_INCREF(result);
     return NewPyObject(env, result);
 }
 
 JNIEXPORT jobject JNICALL
-Java_com_xclz_openpylib_objects_container_PyDict_GetItemWithError(JNIEnv *env, jclass,
-                                                                  jobject jobj, jobject jkey) {
+Java_com_xclz_openpylib_objects_container_PyDict_GetItemWithError(JNIEnv *env, jclass, jobject jobj, jobject jkey) {
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *key = obj_j2c(env, jkey);
     PyObject *result = PyDict_GetItemWithError(obj, key);
+    Py_INCREF(result);
     return NewPyObject(env, result);
 }
 
 JNIEXPORT jobject JNICALL
-Java_com_xclz_openpylib_objects_container_PyDict_GetItemString(JNIEnv *env, jclass, jobject jobj,
-                                                               jstring jkey) {
+Java_com_xclz_openpylib_objects_container_PyDict_GetItemString(JNIEnv *env, jclass, jobject jobj, jstring jkey) {
     PyObject *obj = obj_j2c(env, jobj);
     const char *key = env->GetStringUTFChars(jkey, nullptr);
     PyObject *result = PyDict_GetItemString(obj, key);
+    Py_INCREF(result);
     return NewPyObject(env, result);
 }
 
 JNIEXPORT jobject JNICALL
-Java_com_xclz_openpylib_objects_container_PyDict_SetDefault(JNIEnv *env, jclass, jobject jobj,
-                                                            jobject jkey, jobject jdefaultobj) {
+Java_com_xclz_openpylib_objects_container_PyDict_SetDefault(JNIEnv *env, jclass, jobject jobj, jobject jkey, jobject jdefaultobj) {
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *key = obj_j2c(env, jkey);
     PyObject *defaultobj = obj_j2c(env, jdefaultobj);
     PyObject *result = PyDict_SetDefault(obj, key, defaultobj);
+    Py_INCREF(result);
     return NewPyObject(env, result);
 }
 
