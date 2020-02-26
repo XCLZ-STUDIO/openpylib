@@ -55,6 +55,7 @@ JNIEXPORT jobject JNICALL
 Java_com_xclz_openpylib_objects_sequence_PyTuple_GetItem(JNIEnv *env, jclass, jobject jobj, jlong pos) {
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *result = PyTuple_GetItem(obj, pos);
+    Py_INCREF(result);
     return NewPyObject(env, result);
 }
 
@@ -62,6 +63,7 @@ JNIEXPORT jobject JNICALL
 Java_com_xclz_openpylib_objects_sequence_PyTuple_GET_1ITEM(JNIEnv *env, jclass, jobject jobj, jlong pos) {
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *result = PyTuple_GET_ITEM(obj, pos);
+    Py_INCREF(result);
     return NewPyObject(env, result);
 }
 
@@ -76,6 +78,7 @@ JNIEXPORT jboolean JNICALL
 Java_com_xclz_openpylib_objects_sequence_PyTuple_SetItem(JNIEnv *env, jclass, jobject jobj, jlong pos, jobject jvalue) {
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *value = obj_j2c(env, jvalue);
+    Py_INCREF(value);
     int result = PyTuple_SetItem(obj, pos, value);
     return bool_c2j(result);
 }
@@ -84,6 +87,7 @@ JNIEXPORT void JNICALL
 Java_com_xclz_openpylib_objects_sequence_PyTuple_SET_1ITEM(JNIEnv *env, jclass, jobject jobj, jlong pos, jobject jvalue) {
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *value = obj_j2c(env, jvalue);
+    Py_INCREF(value);
     PyTuple_SET_ITEM(obj, pos, value);
 }
 

@@ -11,11 +11,11 @@ public class PyTuple extends PyObject implements PySequence, PyMapping {
     public static native PyTuple Pack(PyObject... items);
     public static native long Size(PyTuple obj);
     public static native long SIZE(PyTuple obj);
-    public static native PyObject GetItem(PyTuple obj, long pos); //TODO incref
-    public static native PyObject GET_ITEM(PyTuple obj, long pos); //TODO incref
+    public static native PyObject GetItem(PyTuple obj, long pos);
+    public static native PyObject GET_ITEM(PyTuple obj, long pos);
     public static native PyTuple GetSlice(PyTuple obj, long low, long high);
-    public static native boolean SetItem(PyTuple obj, long pos, PyObject value); //TODO incref
-    public static native void SET_ITEM(PyTuple obj, long pos, PyObject value); //TODO incref
+    public static native boolean SetItem(PyTuple obj, long pos, PyObject value);
+    public static native void SET_ITEM(PyTuple obj, long pos, PyObject value);
     //TODO int _PyTuple_Resize(PyObject **p, Py_ssize_t newsize)
     public static native int ClearFreeList();
 
