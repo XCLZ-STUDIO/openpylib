@@ -2,7 +2,6 @@
 
 extern "C" {
 
-
 JNIEXPORT jobject JNICALL
 Java_com_xclz_openpylib_objects_number_PyLong_Check(JNIEnv *env, jclass, jobject jobj) {
     PyObject *obj = obj_j2c(env, jobj);

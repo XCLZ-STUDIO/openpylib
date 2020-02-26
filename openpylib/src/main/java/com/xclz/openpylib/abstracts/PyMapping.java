@@ -3,7 +3,6 @@ package com.xclz.openpylib.abstracts;
 import com.xclz.openpylib.objects.basic.PyObject;
 import com.xclz.openpylib.objects.sequence.PyList;
 
-//TODO implement
 public interface PyMapping extends PyBase {
     static PyMapping Check(PyObject obj) {
         return _PyMapping.Check(obj);

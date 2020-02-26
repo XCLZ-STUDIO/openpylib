@@ -6,7 +6,7 @@ import com.xclz.openpylib.objects.basic.PyObject;
 
 public class PyTuple extends PyObject implements PySequence, PyMapping {
     public static native PyTuple Check(PyObject obj);
-    public static native PyTuple CheckPExact(PyObject obj);
+    public static native PyTuple CheckExact(PyObject obj);
     public static native PyTuple New(long len);
     public static native PyTuple Pack(PyObject... items);
     public static native long Size(PyTuple obj);

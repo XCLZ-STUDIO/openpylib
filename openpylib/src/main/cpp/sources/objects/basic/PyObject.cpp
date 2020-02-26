@@ -7,7 +7,8 @@ Java_com_xclz_openpylib_objects_basic_PyObject_HasAttr(JNIEnv *env, jclass, jobj
                                                        jobject jname) {
    PyObject *obj = obj_j2c(env, jobj);
    PyObject *name = obj_j2c(env, jname);
-   return (jboolean)PyObject_HasAttr(obj, name);
+   int result = PyObject_HasAttr(obj, name);
+   return (jboolean)result;
 }
 
 JNIEXPORT jboolean JNICALL
@@ -43,7 +44,8 @@ Java_com_xclz_openpylib_objects_basic_PyObject_DelAttr(JNIEnv *env, jclass, jobj
                                                        jobject jname) {
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *name = obj_j2c(env, jname);
-    return (jboolean)PyObject_DelAttr(obj, name);
+    int result = PyObject_DelAttr(obj, name);
+    return bool_c2j(result);
 }
 
 JNIEXPORT jboolean JNICALL
@@ -53,7 +55,7 @@ Java_com_xclz_openpylib_objects_basic_PyObject_DelAttrString(JNIEnv *env, jclass
     const char *name = env->GetStringUTFChars(jname, nullptr);
     int result = PyObject_DelAttrString(obj, name);
     env->ReleaseStringUTFChars(jname, name);
-    return (jboolean)result;
+    return bool_c2j(result);
 }
 
 JNIEXPORT jobject JNICALL
@@ -124,11 +126,10 @@ Java_com_xclz_openpylib_objects_basic_PyObject_IsTrue(JNIEnv *env, jclass, jobje
     return (jboolean)result;
 }
 
-JNIEXPORT jboolean JNICALL
+JNIEXPORT jint JNICALL
 Java_com_xclz_openpylib_objects_basic_PyObject_Not(JNIEnv *env, jclass, jobject jobj) {
     PyObject *obj = obj_j2c(env, jobj);
-    int result = PyObject_Not(obj);
-    return (jboolean)result;
+    return PyObject_Not(obj);
 }
 
 JNIEXPORT jobject JNICALL
@@ -173,7 +174,7 @@ Java_com_xclz_openpylib_objects_basic_PyObject_SetItem(JNIEnv *env, jclass, jobj
     PyObject *key = obj_j2c(env, jkey);
     PyObject *value= obj_j2c(env, jvalue);
     int result = PyObject_SetItem(obj, key, value);
-    return (jboolean)result;
+    return bool_c2j(result);
 }
 
 JNIEXPORT jboolean JNICALL
@@ -182,7 +183,7 @@ Java_com_xclz_openpylib_objects_basic_PyObject_DelItem(JNIEnv *env, jclass, jobj
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *key= obj_j2c(env, jkey);
     int result = PyObject_DelItem(obj, key);
-    return (jboolean)result;
+    return bool_c2j(result);
 }
 
 JNIEXPORT jobject JNICALL

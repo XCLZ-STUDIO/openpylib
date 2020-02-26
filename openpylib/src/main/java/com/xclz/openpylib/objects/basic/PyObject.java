@@ -35,7 +35,7 @@ public class PyObject implements AutoCloseable, PyBase {
     public static native PyBytes Bytes(PyObject obj);
     public static native long Hash(PyObject obj);
     public static native boolean IsTrue(PyObject obj);
-    public static native boolean Not(PyObject obj);
+    public static native int Not(PyObject obj);
     public static native PyType Type(PyObject obj);
     public static native long Size(PyObject obj);
     public static native long Length(PyObject obj);
@@ -113,7 +113,7 @@ public class PyObject implements AutoCloseable, PyBase {
         return PyObject.IsTrue(this);
     }
 
-    public boolean Not() {
+    public int not() {
         return PyObject.Not(this);
     }
 

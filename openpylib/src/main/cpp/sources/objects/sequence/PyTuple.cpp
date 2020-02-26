@@ -77,7 +77,7 @@ Java_com_xclz_openpylib_objects_sequence_PyTuple_SetItem(JNIEnv *env, jclass, jo
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *value = obj_j2c(env, jvalue);
     int result = PyTuple_SetItem(obj, pos, value);
-    return (jboolean)result;
+    return bool_c2j(result);
 }
 
 JNIEXPORT void JNICALL

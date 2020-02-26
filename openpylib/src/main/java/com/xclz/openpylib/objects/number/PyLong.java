@@ -4,7 +4,6 @@ import com.xclz.openpylib.abstracts.PyNumber;
 import com.xclz.openpylib.objects.basic.PyObject;
 import com.xclz.openpylib.objects.sequence.PyUnicode;
 
-//TODO implement PyBool
 public class PyLong extends PyObject implements PyNumber {
     public static native PyLong Check(PyObject obj);
     public static native PyLong CheckExact(PyObject obj);

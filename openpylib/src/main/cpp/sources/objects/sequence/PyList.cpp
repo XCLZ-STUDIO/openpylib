@@ -56,17 +56,17 @@ JNIEXPORT jboolean JNICALL
 Java_com_xclz_openpylib_objects_sequence_PyList_SetItem(JNIEnv *env, jclass, jobject jobj, jlong i, jobject jitem) {
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *item = obj_j2c(env, jitem);
-    int result = PyList_SetItem(obj, i, item);
     Py_INCREF(item);
-    return (jboolean)result;
+    int result = PyList_SetItem(obj, i, item);
+    return bool_c2j(result);
 }
 
 JNIEXPORT void JNICALL
 Java_com_xclz_openpylib_objects_sequence_PyList_SET_1ITEM(JNIEnv *env, jclass, jobject jobj, jlong i, jobject jitem) {
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *item = obj_j2c(env, jitem);
-    PyList_SET_ITEM(obj, i, item);
     Py_INCREF(item);
+    PyList_SET_ITEM(obj, i, item);
 }
 
 JNIEXPORT jboolean JNICALL
@@ -74,7 +74,7 @@ Java_com_xclz_openpylib_objects_sequence_PyList_Insert(JNIEnv *env, jclass, jobj
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *item = obj_j2c(env, jitem);
     int result = PyList_Insert(obj, i, item);
-    return (jboolean)result;
+    return bool_c2j(result);
 }
 
 JNIEXPORT jboolean JNICALL
@@ -82,7 +82,7 @@ Java_com_xclz_openpylib_objects_sequence_PyList_Append(JNIEnv *env, jclass, jobj
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *item = obj_j2c(env, jitem);
     int result = PyList_Append(obj, item);
-    return (jboolean)result;
+    return bool_c2j(result);
 }
 
 JNIEXPORT jobject JNICALL
@@ -97,21 +97,21 @@ Java_com_xclz_openpylib_objects_sequence_PyList_SetSlice(JNIEnv *env, jclass, jo
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *itemlist = obj_j2c(env, jitemlist);
     int result = PyList_SetSlice(obj, low, high, itemlist);
-    return (jboolean)result;
+    return bool_c2j(result);
 }
 
 JNIEXPORT jboolean JNICALL
 Java_com_xclz_openpylib_objects_sequence_PyList_Sort(JNIEnv *env, jclass, jobject jobj) {
     PyObject *obj = obj_j2c(env, jobj);
     int result = PyList_Sort(obj);
-    return (jboolean)result;
+    return bool_c2j(result);
 }
 
 JNIEXPORT jboolean JNICALL
 Java_com_xclz_openpylib_objects_sequence_PyList_Reverse(JNIEnv *env, jclass, jobject jobj) {
     PyObject *obj = obj_j2c(env, jobj);
     int result = PyList_Reverse(obj);
-    return (jboolean)result;
+    return bool_c2j(result);
 }
 
 JNIEXPORT jobject JNICALL

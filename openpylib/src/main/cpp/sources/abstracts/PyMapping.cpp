@@ -62,7 +62,7 @@ Java_com_xclz_openpylib_abstracts__1PyMapping_HasKey(JNIEnv *env, jclass, jobjec
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *key = obj_j2c(env, jkey);
     int result = PyMapping_HasKey(obj, key);
-    return bool_c2j(result);
+    return (jboolean)result;
 }
 
 JNIEXPORT jboolean JNICALL
@@ -70,7 +70,7 @@ Java_com_xclz_openpylib_abstracts__1PyMapping_HasKeyString(JNIEnv *env, jclass, 
     PyObject *obj = obj_j2c(env, jobj);
     const char *key = env->GetStringUTFChars(jkey, NULL);
     int result = PyMapping_HasKeyString(obj, key);
-    return bool_c2j(result);
+    return (jboolean)result;
 }
 
 JNIEXPORT jobject JNICALL
