@@ -25,7 +25,7 @@ Java_com_xclz_openpylib_abstracts__1PyMapping_Length(JNIEnv *env, jclass, jobjec
 JNIEXPORT jobject JNICALL
 Java_com_xclz_openpylib_abstracts__1PyMapping_GetItemString(JNIEnv *env, jclass, jobject jobj, jstring jkey) {
     PyObject *obj = obj_j2c(env, jobj);
-    const char *key = env->GetStringUTFChars(jkey, NULL);
+    const char *key = env->GetStringUTFChars(jkey, nullptr);
     PyObject *result = PyMapping_GetItemString(obj, key);
     env->ReleaseStringUTFChars(jkey, key);
     return NewPyObject(env, result);
@@ -35,7 +35,7 @@ JNIEXPORT jboolean JNICALL
 Java_com_xclz_openpylib_abstracts__1PyMapping_SetItemString(JNIEnv *env, jclass, jobject jobj, jstring jkey, jobject jvalue) {
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *value = obj_j2c(env, jvalue);
-    const char *key = env->GetStringUTFChars(jkey, NULL);
+    const char *key = env->GetStringUTFChars(jkey, nullptr);
     int result = PyMapping_SetItemString(obj, key, value);
     return bool_c2j(result);
 }
@@ -51,7 +51,7 @@ Java_com_xclz_openpylib_abstracts__1PyMapping_DelItem(JNIEnv *env, jclass, jobje
 JNIEXPORT jboolean JNICALL
 Java_com_xclz_openpylib_abstracts__1PyMapping_DelItemString(JNIEnv *env, jclass, jobject jobj, jstring jkey) {
     PyObject *obj = obj_j2c(env, jobj);
-    const char *key = env->GetStringUTFChars(jkey, NULL);
+    const char *key = env->GetStringUTFChars(jkey, nullptr);
     int result = PyMapping_DelItemString(obj, key);
     env->ReleaseStringUTFChars(jkey, key);
     return bool_c2j(result);
@@ -68,7 +68,7 @@ Java_com_xclz_openpylib_abstracts__1PyMapping_HasKey(JNIEnv *env, jclass, jobjec
 JNIEXPORT jboolean JNICALL
 Java_com_xclz_openpylib_abstracts__1PyMapping_HasKeyString(JNIEnv *env, jclass, jobject jobj, jstring jkey) {
     PyObject *obj = obj_j2c(env, jobj);
-    const char *key = env->GetStringUTFChars(jkey, NULL);
+    const char *key = env->GetStringUTFChars(jkey, nullptr);
     int result = PyMapping_HasKeyString(obj, key);
     return (jboolean)result;
 }

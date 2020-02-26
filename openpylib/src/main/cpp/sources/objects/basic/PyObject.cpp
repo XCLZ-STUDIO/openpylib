@@ -3,8 +3,7 @@
 extern "C" {
 
 JNIEXPORT jboolean JNICALL
-Java_com_xclz_openpylib_objects_basic_PyObject_HasAttr(JNIEnv *env, jclass, jobject jobj,
-                                                       jobject jname) {
+Java_com_xclz_openpylib_objects_basic_PyObject_HasAttr(JNIEnv *env, jclass, jobject jobj, jobject jname) {
    PyObject *obj = obj_j2c(env, jobj);
    PyObject *name = obj_j2c(env, jname);
    int result = PyObject_HasAttr(obj, name);
@@ -12,8 +11,7 @@ Java_com_xclz_openpylib_objects_basic_PyObject_HasAttr(JNIEnv *env, jclass, jobj
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_xclz_openpylib_objects_basic_PyObject_HasAttrString(JNIEnv *env, jclass, jobject jobj,
-                                                             jstring jname) {
+Java_com_xclz_openpylib_objects_basic_PyObject_HasAttrString(JNIEnv *env, jclass, jobject jobj, jstring jname) {
     PyObject *obj = obj_j2c(env, jobj);
     const char *name = env->GetStringUTFChars(jname, nullptr);
     int result = PyObject_HasAttrString(obj, name);
@@ -22,16 +20,14 @@ Java_com_xclz_openpylib_objects_basic_PyObject_HasAttrString(JNIEnv *env, jclass
 }
 
 JNIEXPORT jobject JNICALL
-Java_com_xclz_openpylib_objects_basic_PyObject_GetAttr(JNIEnv *env, jclass, jobject jobj,
-                                                       jobject jname) {
+Java_com_xclz_openpylib_objects_basic_PyObject_GetAttr(JNIEnv *env, jclass, jobject jobj, jobject jname) {
    PyObject *obj = obj_j2c(env, jobj);
    PyObject *name = obj_j2c(env, jname);
    return NewPyObject(env, PyObject_GetAttr(obj, name));
 }
 
 JNIEXPORT jobject JNICALL
-Java_com_xclz_openpylib_objects_basic_PyObject_GetAttrString(JNIEnv *env, jclass, jobject jobj,
-                                                             jstring jname) {
+Java_com_xclz_openpylib_objects_basic_PyObject_GetAttrString(JNIEnv *env, jclass, jobject jobj, jstring jname) {
     PyObject *obj = obj_j2c(env, jobj);
     const char *name = env->GetStringUTFChars(jname, nullptr);
     PyObject *result = PyObject_GetAttrString(obj, name);
@@ -40,8 +36,7 @@ Java_com_xclz_openpylib_objects_basic_PyObject_GetAttrString(JNIEnv *env, jclass
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_xclz_openpylib_objects_basic_PyObject_DelAttr(JNIEnv *env, jclass, jobject jobj,
-                                                       jobject jname) {
+Java_com_xclz_openpylib_objects_basic_PyObject_DelAttr(JNIEnv *env, jclass, jobject jobj, jobject jname) {
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *name = obj_j2c(env, jname);
     int result = PyObject_DelAttr(obj, name);
@@ -49,8 +44,7 @@ Java_com_xclz_openpylib_objects_basic_PyObject_DelAttr(JNIEnv *env, jclass, jobj
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_xclz_openpylib_objects_basic_PyObject_DelAttrString(JNIEnv *env, jclass, jobject jobj,
-                                                             jstring jname) {
+Java_com_xclz_openpylib_objects_basic_PyObject_DelAttrString(JNIEnv *env, jclass, jobject jobj, jstring jname) {
     PyObject *obj = obj_j2c(env, jobj);
     const char *name = env->GetStringUTFChars(jname, nullptr);
     int result = PyObject_DelAttrString(obj, name);
@@ -59,8 +53,7 @@ Java_com_xclz_openpylib_objects_basic_PyObject_DelAttrString(JNIEnv *env, jclass
 }
 
 JNIEXPORT jobject JNICALL
-Java_com_xclz_openpylib_objects_basic_PyObject_RichCompare(JNIEnv *env, jclass, jobject jobj1,
-                                                           jobject jobj2, jint opid) {
+Java_com_xclz_openpylib_objects_basic_PyObject_RichCompare(JNIEnv *env, jclass, jobject jobj1, jobject jobj2, jint opid) {
     PyObject *obj1 = obj_j2c(env, jobj1);
     PyObject *obj2 = obj_j2c(env, jobj2);
     PyObject *result = PyObject_RichCompare(obj1, obj2, opid);
@@ -68,8 +61,7 @@ Java_com_xclz_openpylib_objects_basic_PyObject_RichCompare(JNIEnv *env, jclass, 
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_xclz_openpylib_objects_basic_PyObject_RichCompareBool(JNIEnv *env, jclass, jobject jobj1,
-                                                               jobject jobj2, jint opid) {
+Java_com_xclz_openpylib_objects_basic_PyObject_RichCompareBool(JNIEnv *env, jclass, jobject jobj1, jobject jobj2, jint opid) {
     PyObject *obj1 = obj_j2c(env, jobj1);
     PyObject *obj2 = obj_j2c(env, jobj2);
     int result = PyObject_RichCompareBool(obj1, obj2, opid);
@@ -77,8 +69,7 @@ Java_com_xclz_openpylib_objects_basic_PyObject_RichCompareBool(JNIEnv *env, jcla
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_xclz_openpylib_objects_basic_PyObject_IsInstance(JNIEnv *env, jclass, jobject jinst,
-                                                          jobject jcls) {
+Java_com_xclz_openpylib_objects_basic_PyObject_IsInstance(JNIEnv *env, jclass, jobject jinst, jobject jcls) {
     PyObject *inst = obj_j2c(env, jinst);
     PyObject *cls = obj_j2c(env, jcls);
     int result = PyObject_IsInstance(inst, cls);
@@ -111,6 +102,25 @@ Java_com_xclz_openpylib_objects_basic_PyObject_Bytes(JNIEnv *env, jclass, jobjec
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *result = PyObject_Bytes(obj);
     return NewPyBytes(env, result);
+}
+
+JNIEXPORT jobject JNICALL
+Java_com_xclz_openpylib_objects_basic_PyObject_CallMethod(JNIEnv *env, jclass, jobject jobj, jstring jname, jobject jargs) {
+    PyObject *obj = obj_j2c(env, jobj);
+    PyObject *args = obj_j2c(env, jargs);
+    const char *name = env->GetStringUTFChars(jname, nullptr);
+    if (obj == nullptr || args == nullptr) {
+        if (!PyErr_Occurred())
+            PyErr_SetString(PyExc_SystemError,
+                            "null argument to internal routine");
+        return nullptr;
+    }
+    PyObject *callable = PyObject_GetAttrString(obj, name);
+    if (callable == nullptr)
+        return nullptr;
+    PyObject *result = PyObject_CallObject(callable, args);
+    env->ReleaseStringUTFChars(jname, name);
+    return NewPyObject(env, result);
 }
 
 JNIEXPORT jlong JNICALL
@@ -152,15 +162,13 @@ Java_com_xclz_openpylib_objects_basic_PyObject_Length(JNIEnv *env, jclass, jobje
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_xclz_openpylib_objects_basic_PyObject_LengthHint(JNIEnv *env, jclass, jobject jobj,
-                                                          jlong publicValue) {
+Java_com_xclz_openpylib_objects_basic_PyObject_LengthHint(JNIEnv *env, jclass, jobject jobj, jlong publicValue) {
     PyObject *obj = obj_j2c(env, jobj);
     return PyObject_LengthHint(obj, publicValue);
 }
 
 JNIEXPORT jobject JNICALL
-Java_com_xclz_openpylib_objects_basic_PyObject_GetItem(JNIEnv *env, jclass, jobject jobj,
-                                                       jobject jkey) {
+Java_com_xclz_openpylib_objects_basic_PyObject_GetItem(JNIEnv *env, jclass, jobject jobj, jobject jkey) {
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *key= obj_j2c(env, jkey);
     PyObject *result = PyObject_GetItem(obj, key);
@@ -168,8 +176,7 @@ Java_com_xclz_openpylib_objects_basic_PyObject_GetItem(JNIEnv *env, jclass, jobj
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_xclz_openpylib_objects_basic_PyObject_SetItem(JNIEnv *env, jclass, jobject jobj,
-                                                       jobject jkey, jobject jvalue) {
+Java_com_xclz_openpylib_objects_basic_PyObject_SetItem(JNIEnv *env, jclass, jobject jobj, jobject jkey, jobject jvalue) {
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *key = obj_j2c(env, jkey);
     PyObject *value= obj_j2c(env, jvalue);
@@ -178,8 +185,7 @@ Java_com_xclz_openpylib_objects_basic_PyObject_SetItem(JNIEnv *env, jclass, jobj
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_xclz_openpylib_objects_basic_PyObject_DelItem(JNIEnv *env, jclass, jobject jobj,
-                                                       jobject jkey) {
+Java_com_xclz_openpylib_objects_basic_PyObject_DelItem(JNIEnv *env, jclass, jobject jobj, jobject jkey) {
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *key= obj_j2c(env, jkey);
     int result = PyObject_DelItem(obj, key);

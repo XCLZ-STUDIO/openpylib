@@ -2,16 +2,19 @@
 #include <Python.h>
 #include <jni.h>
 
+extern jclass _PyCallable_class;
+extern jclass _PyIter_class;
+extern jclass _PyMapping_class;
 extern jclass _PyNumber_class;
+extern jclass _PySequence_class;
+
 extern jclass PyByteArray_class;
 extern jclass PyBytes_class;
 extern jclass PyDict_class;
 extern jclass PyFloat_class;
 extern jclass PyList_class;
 extern jclass PyLong_class;
-extern jclass PyMapping_class;
 extern jclass PyObject_class;
-extern jclass PySequence_class;
 extern jclass PyTuple_class;
 extern jclass PyType_class;
 extern jclass PyUnicode_class;
@@ -43,9 +46,23 @@ inline jobject obj_c2j(JNIEnv *env, jclass clazz, jmethodID init, PyObject *obj)
 }
 
 
+inline jobject NewPyCallable(JNIEnv *env, PyObject *obj) {
+    return obj_c2j(env, _PyCallable_class, PyObject_init, obj);
+}
+inline jobject NewPyIter(JNIEnv *env, PyObject *obj) {
+    return obj_c2j(env, _PyIter_class, PyObject_init, obj);
+}
+inline jobject NewPyMapping(JNIEnv *env, PyObject *obj) {
+    return obj_c2j(env, _PyMapping_class, PyObject_init, obj);
+}
 inline jobject NewPyNumber(JNIEnv *env, PyObject *obj) {
     return obj_c2j(env, _PyNumber_class, PyObject_init, obj);
 }
+inline jobject NewPySequence(JNIEnv *env, PyObject *obj) {
+    return obj_c2j(env, _PySequence_class, PyObject_init, obj);
+}
+
+
 inline jobject NewPyByteArray(JNIEnv *env, PyObject *obj) {
     return obj_c2j(env, PyByteArray_class, PyObject_init, obj);
 }
@@ -64,14 +81,8 @@ inline jobject NewPyList(JNIEnv *env, PyObject *obj) {
 inline jobject NewPyLong(JNIEnv *env, PyObject *obj) {
     return obj_c2j(env, PyLong_class, PyObject_init, obj);
 }
-inline jobject NewPyMapping(JNIEnv *env, PyObject *obj) {
-    return obj_c2j(env, PyMapping_class, PyObject_init, obj);
-}
 inline jobject NewPyObject(JNIEnv *env, PyObject *obj) {
     return obj_c2j(env, PyObject_class, PyObject_init, obj);
-}
-inline jobject NewPySequence(JNIEnv *env, PyObject *obj) {
-    return obj_c2j(env, PySequence_class, PyObject_init, obj);
 }
 inline jobject NewPyType(JNIEnv *env, PyObject *obj) {
     return obj_c2j(env, PyType_class, PyObject_init, obj);

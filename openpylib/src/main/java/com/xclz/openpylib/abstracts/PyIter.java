@@ -7,13 +7,16 @@ public interface PyIter extends PyBase {
         return _PyIter.Check(obj);
     }
 
+    static PyObject Next(PyIter obj) {
+        return _PyIter.Next(obj);
+    }
+
     default PyObject next() {
-        return _PyIter.Next(this);
+        return Next(this);
     }
 }
 
 class _PyIter {
     public static native PyIter Check(PyObject obj);
-
     public static native PyObject Next(PyIter obj);
 }

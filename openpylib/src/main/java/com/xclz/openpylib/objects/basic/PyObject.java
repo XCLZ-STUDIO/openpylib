@@ -3,6 +3,7 @@ package com.xclz.openpylib.objects.basic;
 import com.xclz.openpylib.abstracts.PyBase;
 import com.xclz.openpylib.objects.sequence.PyBytes;
 import com.xclz.openpylib.objects.sequence.PyList;
+import com.xclz.openpylib.objects.sequence.PyTuple;
 import com.xclz.openpylib.objects.sequence.PyUnicode;
 import com.xclz.openpylib.python.Py;
 
@@ -45,6 +46,23 @@ public class PyObject implements AutoCloseable, PyBase {
     public static native boolean DelItem(PyObject obj, PyObject key);
     public static native PyList Dir(PyObject obj);
     public static native PyObject GetIter(PyObject obj);
+    public static native PyObject CallMethod(PyObject obj, String name, PyTuple args);
+
+    public static boolean HasAttr(PyObject obj, String name) {
+        return HasAttrString(obj, name);
+    }
+
+    public static PyObject GetAttr(PyObject obj, String name) {
+        return GetAttrString(obj, name);
+    }
+
+    public static boolean DelAttr(PyObject obj, String name) {
+        return DelAttrString(obj, name);
+    }
+
+    public static PyObject CallMethod(PyObject obj, String name, PyObject... args) {
+        return CallMethod(obj, name, PyTuple.Pack(args));
+    }
 
     //TODO int PyObject_Print(PyObject *o, FILE *fp, int flags)
 
