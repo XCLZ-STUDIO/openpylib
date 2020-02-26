@@ -2,7 +2,7 @@ package com.xclz.openpylib.abstracts;
 
 import com.xclz.openpylib.objects.basic.PyObject;
 
-public interface PyIter extends PyBase {
+public interface PyIter {
     static PyIter Check(PyObject obj) {
         return _PyIter.Check(obj);
     }

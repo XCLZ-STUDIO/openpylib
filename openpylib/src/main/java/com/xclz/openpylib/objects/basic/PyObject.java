@@ -1,13 +1,12 @@
 package com.xclz.openpylib.objects.basic;
 
-import com.xclz.openpylib.abstracts.PyBase;
 import com.xclz.openpylib.objects.sequence.PyBytes;
 import com.xclz.openpylib.objects.sequence.PyList;
 import com.xclz.openpylib.objects.sequence.PyTuple;
 import com.xclz.openpylib.objects.sequence.PyUnicode;
 import com.xclz.openpylib.python.Py;
 
-public class PyObject implements AutoCloseable, PyBase {
+public class PyObject implements AutoCloseable {
     long mPointer = 0;
     long ob_refcnt = 1;
     PyType ob_type;

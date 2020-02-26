@@ -4,7 +4,7 @@ import com.xclz.openpylib.objects.basic.PyObject;
 import com.xclz.openpylib.objects.container.PyDict;
 import com.xclz.openpylib.objects.sequence.PyTuple;
 
-public interface PyCallable extends PyBase {
+public interface PyCallable {
     static PyCallable Check(PyObject obj) {
         return _PyCallable.Check(obj);
     }
