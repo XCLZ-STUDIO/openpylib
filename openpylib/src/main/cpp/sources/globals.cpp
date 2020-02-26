@@ -7,6 +7,7 @@ jclass PyDict_class = nullptr;
 jclass PyFloat_class = nullptr;
 jclass PyList_class = nullptr;
 jclass PyLong_class = nullptr;
+jclass PyMapping_class = nullptr;
 jclass PyObject_class = nullptr;
 jclass PySequence_class = nullptr;
 jclass PyTuple_class = nullptr;
@@ -24,13 +25,14 @@ jmethodID PyObject_init = nullptr;
 //jmethodID PyUnicode_init = nullptr;
 
 static void init_class(JNIEnv *env) {
-    _PyNumber_class = (jclass) env->NewGlobalRef(env->FindClass("com/xclz/openpylib/abstracts/_PyNumber"));
+    _PyNumber_class = (jclass)env->NewGlobalRef(env->FindClass("com/xclz/openpylib/abstracts/_PyNumber"));
     PyByteArray_class = (jclass)env->NewGlobalRef(env->FindClass("com/xclz/openpylib/objects/sequence/PyByteArray"));
     PyBytes_class = (jclass)env->NewGlobalRef(env->FindClass("com/xclz/openpylib/objects/sequence/PyBytes"));
     PyDict_class = (jclass) env->NewGlobalRef(env->FindClass("com/xclz/openpylib/objects/container/PyDict"));
     PyFloat_class = (jclass)env->NewGlobalRef(env->FindClass("com/xclz/openpylib/objects/number/PyFloat"));
     PyList_class = (jclass)env->NewGlobalRef(env->FindClass("com/xclz/openpylib/objects/sequence/PyList"));
     PyLong_class = (jclass)env->NewGlobalRef(env->FindClass("com/xclz/openpylib/objects/number/PyLong"));
+    PyMapping_class = (jclass)env->NewGlobalRef(env->FindClass("com/xclz/openpylib/abstracts/PyMapping"));
     PyObject_class = (jclass)env->NewGlobalRef(env->FindClass("com/xclz/openpylib/objects/basic/PyObject"));
     PySequence_class = (jclass)env->NewGlobalRef(env->FindClass("com/xclz/openpylib/abstracts/PySequence"));
     PyTuple_class = (jclass)env->NewGlobalRef(env->FindClass("com/xclz/openpylib/objects/sequence/PyTuple"));

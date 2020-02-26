@@ -9,6 +9,7 @@ extern jclass PyDict_class;
 extern jclass PyFloat_class;
 extern jclass PyList_class;
 extern jclass PyLong_class;
+extern jclass PyMapping_class;
 extern jclass PyObject_class;
 extern jclass PySequence_class;
 extern jclass PyTuple_class;
@@ -25,8 +26,12 @@ extern jmethodID PyObject_init;
 //extern jmethodID PyType_init;
 //extern jmethodID PyUnicode_init;
 
+inline jboolean bool_c2j(int value) {
+    return (jboolean)(value == 0);
+}
+
 inline PyObject* obj_j2c(JNIEnv *env, jobject jobj) {
-    return (PyObject*)env->GetLongField(jobj, mPointer_field);
+    return (PyObject*)env->GetLongField(jobj, mPointer_field);;
 }
 
 inline jobject obj_c2j(JNIEnv *env, jclass clazz, jmethodID init, PyObject *obj) {
@@ -36,6 +41,7 @@ inline jobject obj_c2j(JNIEnv *env, jclass clazz, jmethodID init, PyObject *obj)
     env->SetLongField(jobj, mPointer_field, (jlong)obj);
     return jobj;
 }
+
 
 inline jobject NewPyNumber(JNIEnv *env, PyObject *obj) {
     return obj_c2j(env, _PyNumber_class, PyObject_init, obj);
@@ -57,6 +63,9 @@ inline jobject NewPyList(JNIEnv *env, PyObject *obj) {
 }
 inline jobject NewPyLong(JNIEnv *env, PyObject *obj) {
     return obj_c2j(env, PyLong_class, PyObject_init, obj);
+}
+inline jobject NewPyMapping(JNIEnv *env, PyObject *obj) {
+    return obj_c2j(env, PyMapping_class, PyObject_init, obj);
 }
 inline jobject NewPyObject(JNIEnv *env, PyObject *obj) {
     return obj_c2j(env, PyObject_class, PyObject_init, obj);
