@@ -1,12 +1,12 @@
 package com.xclz.openpylib.objects.basic;
 
-import com.xclz.openpylib.abstracts.PyBase;
 import com.xclz.openpylib.objects.sequence.PyBytes;
 import com.xclz.openpylib.objects.sequence.PyList;
+import com.xclz.openpylib.objects.sequence.PyTuple;
 import com.xclz.openpylib.objects.sequence.PyUnicode;
 import com.xclz.openpylib.python.Py;
 
-public class PyObject implements AutoCloseable, PyBase {
+public class PyObject implements AutoCloseable {
     long mPointer = 0;
     long ob_refcnt = 1;
     PyType ob_type;
@@ -35,7 +35,7 @@ public class PyObject implements AutoCloseable, PyBase {
     public static native PyBytes Bytes(PyObject obj);
     public static native long Hash(PyObject obj);
     public static native boolean IsTrue(PyObject obj);
-    public static native boolean Not(PyObject obj);
+    public static native int Not(PyObject obj);
     public static native PyType Type(PyObject obj);
     public static native long Size(PyObject obj);
     public static native long Length(PyObject obj);
@@ -45,6 +45,23 @@ public class PyObject implements AutoCloseable, PyBase {
     public static native boolean DelItem(PyObject obj, PyObject key);
     public static native PyList Dir(PyObject obj);
     public static native PyObject GetIter(PyObject obj);
+    public static native PyObject CallMethod(PyObject obj, String name, PyTuple args);
+
+    public static boolean HasAttr(PyObject obj, String name) {
+        return HasAttrString(obj, name);
+    }
+
+    public static PyObject GetAttr(PyObject obj, String name) {
+        return GetAttrString(obj, name);
+    }
+
+    public static boolean DelAttr(PyObject obj, String name) {
+        return DelAttrString(obj, name);
+    }
+
+    public static PyObject CallMethod(PyObject obj, String name, PyObject... args) {
+        return CallMethod(obj, name, PyTuple.Pack(args));
+    }
 
     //TODO int PyObject_Print(PyObject *o, FILE *fp, int flags)
 
@@ -113,7 +130,7 @@ public class PyObject implements AutoCloseable, PyBase {
         return PyObject.IsTrue(this);
     }
 
-    public boolean Not() {
+    public int not() {
         return PyObject.Not(this);
     }
 

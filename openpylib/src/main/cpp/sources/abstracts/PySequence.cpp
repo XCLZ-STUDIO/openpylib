@@ -71,14 +71,14 @@ Java_com_xclz_openpylib_abstracts__1PySequence_SetItem(JNIEnv *env, jclass, jobj
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *value = obj_j2c(env, jvalue);
     int result = PySequence_SetItem(obj, index, value);
-    return (jboolean)result;
+    return bool_c2j(result);
 }
 
 JNIEXPORT jboolean JNICALL
 Java_com_xclz_openpylib_abstracts__1PySequence_DelItem(JNIEnv *env, jclass, jobject jobj, jlong index) {
     PyObject *obj = obj_j2c(env, jobj);
     int result = PySequence_DelItem(obj, index);
-    return (jboolean)result;
+    return bool_c2j(result);
 }
 
 JNIEXPORT jboolean JNICALL
@@ -86,7 +86,7 @@ Java_com_xclz_openpylib_abstracts__1PySequence_SetSlice(JNIEnv *env, jclass, job
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *value = obj_j2c(env, jvalue);
     int result = PySequence_SetSlice(obj, index1, index2, value);
-    return (jboolean)result;
+    return bool_c2j(result);
 }
 
 JNIEXPORT jlong JNICALL
@@ -101,7 +101,7 @@ Java_com_xclz_openpylib_abstracts__1PySequence_Contains(JNIEnv *env, jclass, job
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *value = obj_j2c(env, jvalue);
     int result = PySequence_Contains(obj, value);
-    return (jboolean)result;
+    return bool_c2j(result);
 }
 
 JNIEXPORT jlong JNICALL

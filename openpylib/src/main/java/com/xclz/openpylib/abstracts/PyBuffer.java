@@ -1,7 +1,7 @@
 package com.xclz.openpylib.abstracts;
 
 //TODO implement
-public interface PyBuffer extends PyBase {
+public interface PyBuffer {
 }
 
 class _PyBuffer {

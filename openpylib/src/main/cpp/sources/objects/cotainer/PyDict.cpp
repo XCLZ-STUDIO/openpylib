@@ -35,7 +35,7 @@ Java_com_xclz_openpylib_objects_container_PyDict_Contains(JNIEnv *env, jclass, j
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *key = obj_j2c(env, jkey);
     int result = PyDict_Contains(obj, key);
-    return (jboolean) result;
+    return (jboolean)result;
 }
 
 JNIEXPORT jobject JNICALL
@@ -51,7 +51,7 @@ Java_com_xclz_openpylib_objects_container_PyDict_SetItem(JNIEnv *env, jclass, jo
     PyObject *key = obj_j2c(env, jkey);
     PyObject *value = obj_j2c(env, jvalue);
     int result = PyDict_SetItem(obj, key, value);
-    return (jboolean) result;
+    return bool_c2j(result);
 }
 
 JNIEXPORT jboolean JNICALL
@@ -60,7 +60,7 @@ Java_com_xclz_openpylib_objects_container_PyDict_SetItemString(JNIEnv *env, jcla
     const char *key = env->GetStringUTFChars(jkey, nullptr);
     PyObject *value = obj_j2c(env, jvalue);
     int result = PyDict_SetItemString(obj, key, value);
-    return (jboolean) result;
+    return bool_c2j(result);
 }
 
 JNIEXPORT jboolean JNICALL
@@ -68,7 +68,7 @@ Java_com_xclz_openpylib_objects_container_PyDict_DelItem(JNIEnv *env, jclass, jo
     PyObject *obj = obj_j2c(env, jobj);
     PyObject *key = obj_j2c(env, jkey);
     int result = PyDict_DelItem(obj, key);
-    return (jboolean) result;
+    return bool_c2j(result);
 }
 
 JNIEXPORT jboolean JNICALL
@@ -76,7 +76,7 @@ Java_com_xclz_openpylib_objects_container_PyDict_DelItemString(JNIEnv *env, jcla
     PyObject *obj = obj_j2c(env, jobj);
     const char *key = env->GetStringUTFChars(jkey, nullptr);
     int result = PyDict_DelItemString(obj, key);
-    return (jboolean) result;
+    return bool_c2j(result);
 }
 
 JNIEXPORT jobject JNICALL
@@ -144,28 +144,24 @@ Java_com_xclz_openpylib_objects_container_PyDict_Size(JNIEnv *env, jclass, jobje
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_xclz_openpylib_objects_container_PyDict_Merge(JNIEnv *env, jclass, jobject ja,
-                                                       jobject jb, jboolean override) {
+Java_com_xclz_openpylib_objects_container_PyDict_Merge(JNIEnv *env, jclass, jobject ja, jobject jb, jboolean override) {
     PyObject *a = obj_j2c(env, ja);
     PyObject *b = obj_j2c(env, jb);
     int result = PyDict_Merge(a, b, override);
-    return (jboolean) result;
+    return bool_c2j(result);
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_xclz_openpylib_objects_container_PyDict_Update(JNIEnv *env, jclass, jobject ja,
-                                                        jobject jb) {
+Java_com_xclz_openpylib_objects_container_PyDict_Update(JNIEnv *env, jclass, jobject ja, jobject jb) {
     PyObject *a = obj_j2c(env, ja);
     PyObject *b = obj_j2c(env, jb);
     int result = PyDict_Update(a, b);
-    return (jboolean) result;
+    return bool_c2j(result);
 }
 
-JNIEXPORT jboolean JNICALL
+JNIEXPORT jint JNICALL
 Java_com_xclz_openpylib_objects_container_PyDict_ClearFreeList(JNIEnv *, jclass) {
-    int result = PyDict_ClearFreeList();
-    return (jboolean) result;
+    return PyDict_ClearFreeList();
 }
 
 }
-#pragma clang diagnostic pop
