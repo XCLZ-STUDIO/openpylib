@@ -25,7 +25,7 @@ public interface PyNumber {
     }
 
     static PyNumber TrueDiv(PyNumber o1, PyNumber o2) {
-        return _PyNumber.TrueDiv(o1, o2);
+        return _PyNumber.TrueDivide(o1, o2);
     }
 
     static PyNumber Rem(PyNumber o1, PyNumber o2) {
@@ -294,7 +294,7 @@ class _PyNumber extends PyObject implements PyNumber {
     public static native PyNumber Multiply(PyNumber o1, PyNumber o2);
     public static native PyNumber MatrixMultiply(PyNumber o1, PyNumber o2);
     public static native PyNumber FloorDivide(PyNumber o1, PyNumber o2);
-    public static native PyNumber TrueDiv(PyNumber o1, PyNumber o2);
+    public static native PyNumber TrueDivide(PyNumber o1, PyNumber o2);
     public static native PyNumber Remainder(PyNumber o1, PyNumber o2);
     public static native PyNumber DivMod(PyNumber o1, PyNumber o2);
     public static native PyNumber Power(PyNumber o1, PyNumber o2, PyNumber o3);

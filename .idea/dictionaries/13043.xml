@@ -2,9 +2,20 @@
   <dictionary name="13043">
     <words>
       <w>initsigs</w>
+      <w>jargs</w>
+      <w>jerror</w>
+      <w>jerrors</w>
+      <w>jformat</w>
+      <w>jleft</w>
       <w>jname</w>
       <w>jobj</w>
       <w>jobject</w>
+      <w>jrep</w>
+      <w>jright</w>
+      <w>jseq</w>
+      <w>jstr</w>
+      <w>jsub</w>
+      <w>jtable</w>
       <w>openpylib</w>
       <w>pythonhome</w>
       <w>refcnt</w>
